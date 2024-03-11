@@ -49,9 +49,17 @@ int main(int argc, char **argv) {
   
   std::cout << "Waiting for a client to connect...\n";
   
-  accept(server_fd, (struct sockaddr *) &client_addr, (socklen_t *) &client_addr_len);
+  int clinet_fd = accept(server_fd, (struct sockaddr *) &client_addr, (socklen_t *) &client_addr_len);
   std::cout << "Client connected\n";
   
+  char *buffer = new char[512];
+  char *message = "HTTP/1.1 200 OK\r\n\r\n";
+  
+  while(recv(clinet_fd, buffer, strlen(buffer) - 1, 0));
+  {
+    send(clinet_fd, message, strlen(message), 0);
+  }
+
   close(server_fd);
 
   return 0;
