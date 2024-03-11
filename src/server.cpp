@@ -54,6 +54,7 @@ int main(int argc, char **argv) {
   
   char *buffer = new char[512];
   char *message = "HTTP/1.1 200 OK\r\n\r\n";
+  send(clinet_fd, message, strlen(message), 0);
   
   while(recv(clinet_fd, buffer, strlen(buffer) - 1, 0));
   {
