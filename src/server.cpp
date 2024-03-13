@@ -16,10 +16,8 @@ void parseRequest(char *buffer, int buffer_size, char *answer)
     char *line = strtok(buffer, sep);
     line = strtok(line, " ");
     line = strtok(NULL, " ");
-    if (strchr(line,'/') != NULL)
-    {
+    if (strcmp(line, "/") == 0)
       strcpy(answer, succeded);
-    }
     else
       strcpy(answer, error);
 }
