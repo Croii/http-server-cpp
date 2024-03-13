@@ -14,8 +14,9 @@ void parseRequest(char *buffer, int buffer_size, char *answer)
     char *error = "HTTP/1.1 404 Not Found\r\n\r\n";
     char *sep = "\r\n";
     char *line = strtok(buffer, sep);
-
-    if (strlen(buffer) > 4 && buffer[4] == '/')
+    line = strtok(line, " ");
+    line = strtok(NULL, " ");
+    if (strchr(line,'/') == 0)
     {
       strcpy(answer, succeded);
     }
